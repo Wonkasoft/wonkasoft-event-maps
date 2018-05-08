@@ -100,10 +100,15 @@ class Wonkasoft_Event_Maps_Admin {
 
 	}
 
+	// Builds the Admin menu for the plugin
+	public function wonkasoft_event_maps_admin_menu() {
+		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-menu.php';
+	}
+
 	/**
 	 * [wonkasoft_event_maps_add_action_links This adds the action links in the plugin area of the dashboard]
 	 *
-	 * @since 1.0.0 [<adding of action links>]
+	 * @since 1.0.0 [<Adding of action links>]
 	 */
 	public function wonkasoft_event_maps_add_action_links() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-add-action-links.php';

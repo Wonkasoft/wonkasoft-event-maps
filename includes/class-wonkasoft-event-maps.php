@@ -158,6 +158,7 @@ class Wonkasoft_Event_Maps {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wonkasoft_event_maps_add_action_links' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wonkasoft_event_maps_admin' );
+		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wonkasoft_event_maps_admin_menu' );
 
 	}
 
