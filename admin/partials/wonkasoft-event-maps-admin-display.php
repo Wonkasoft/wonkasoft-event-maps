@@ -31,7 +31,7 @@
 						<h4>Documentation for Wonkasoft Event Maps</h4>
 						<p>Shortcode Information - Instructions on how to use the Wonkasoft Event Maps plugin</p>
 						<p><strong>Default Shortcode</strong>
-						<code>[wonkasoft-event-maps]</code></p>
+						<code>[wonkasoft-event-maps]</code> <i class="fas fa-copy"></i> </p>
 						<h4>Please select your post type</h4>
 						<?php echo do_shortcode('[wonkasoft-event-maps]'); ?>
 						<p></p>

@@ -15,11 +15,11 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 
 	global $post;
 	$args = array(
-		'post_type' => 'everbrite_event',
+		'post_type' => 'page',
 	);
 	$post_types = get_post_types();
-	var_dump($post_types);
-	var_dump( get_posts($args) );
+	// var_dump($post_types);
+	// var_dump( get_posts($args) );
 	$output = '';
 	$atts = shortcode_atts( array(
 		'id' => 'wonkasoft-event-maps-main',
@@ -30,11 +30,11 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 		'map_class' => 'wonkasoft-event-maps-map',
 	), $atts );
 
+		$output .= '<div id="map"></div>';
 	
 		ob_start();
 
-
-		ob_get_clean();
+		$output .= ob_get_clean();
 
 		return $output;
 

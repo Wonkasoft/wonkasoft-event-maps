@@ -41,7 +41,7 @@ private $wem_fields = array(
 		"title"         => "Post Type Selection",
 		"description"   => "",
 		"type"          => "selector",
-		"scope"         => array(),
+		"scope"         => array( 'page' ),
 		"capability"    => "edit_post",
 	)
 );
@@ -61,10 +61,10 @@ public function __construct() {
 }
 
 public function create_wem_fields() {
+	var_dump('test1');
 	if ( function_exists( 'add_meta_box' ) ) :
-		foreach ( $this->wem_post_types as $post_type ) :
-			add_meta_box( 'wem-field', __( 'Wonkasoft Event Maps Selection', 'text_domain' ), array( $this, 'wonkasoft_event_maps_Meta_Box_layouts' ), $post_type, 'normal', 'high' );
-		endforeach;
+		var_dump('test inside');
+			add_meta_box( 'wem-field', __( 'Wonkasoft Event Maps Selection', 'text_domain' ), array( $this, 'wonkasoft_event_maps_Meta_Box_layouts' ), 'wonkasoft_event_maps_settings_display', 'normal', 'high' );
 	endif;
 } // end create_wem_fields
 
@@ -74,7 +74,7 @@ public function wonkasoft_event_maps_Meta_Box_layouts() {
 	<div class="form-wrap">
 		<?php wp_nonce_field( 'wem-fields', 'wem-fields_wpnonce', false, true );
 		foreach ( $this->$wem_fields as $wem_field ) :
-// Check Scope
+			// Check Scope
 			$scope = $wem_field['scope'];
 			$output = false;
 			foreach ( $scope as $scopeItem ) :
@@ -98,9 +98,12 @@ public function wonkasoft_event_maps_Meta_Box_layouts() {
 					switch ( $wem_field[ 'type' ] ) {
 						
 							default: {
-							// Post Type Selection Field
+								$args = array(
+									'post_type' => $wem_field[ 'scope' ]
+								);
+								// Post Type Selection Field
 								echo '<label for="' . $this->wem_prefix . $wem_field[ 'name' ] .'"><h3>' . $wem_field[ 'title' ] . '</h3></label>';
-								echo '<input type="text" name="' . $this->wem_prefix . $wem_field[ 'name' ] . '" id="' . $this->wem_prefix . $wem_field[ 'name' ] . '" value="' . htmlspecialchars( get_post_meta( $post->ID, $this->wem_prefix . $wem_field[ 'name' ], true ) ) . '" />';
+								echo wp_dropdown_pages( $args );
 								break;
 							}
 						}
