@@ -59,7 +59,7 @@ class Wonkasoft_Event_Maps_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles( $page ) {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -72,6 +72,15 @@ class Wonkasoft_Event_Maps_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+
+		$style = 'bootstrap';
+		if( ! wp_style_is( $style, 'enqueued' ) &&  ! wp_style_is( $style, 'done' ) ) {
+			// Check page to load bootstrapjs only on settings page
+			if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_settings_display' ) {
+	    	// Enqueue bootstrap CSS
+			wp_enqueue_style( $style, str_replace( array( 'http:', 'https:' ), '', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css'), array(), '4.0.0', 'all');
+			}
+		}
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wonkasoft-event-maps-admin.css', array(), $this->version, 'all' );
 
@@ -82,7 +91,7 @@ class Wonkasoft_Event_Maps_Admin {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts( $page ) {
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -95,6 +104,16 @@ class Wonkasoft_Event_Maps_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
+		
+		// Check to see if bootstrap js is already enqueue before setting the enqueue
+		$bootstrapjs = 'bootstrap-js';
+		if ( ! wp_script_is( $bootstrapjs, 'enqueued' ) && ! wp_script_is($bootstrapjs, 'done' ) ) {
+			// Check page to load bootstrapjs only on settings page
+		 	if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_settings_display' ) {
+			 	// Enqueue bootstrap js
+				wp_enqueue_script( $bootstrapjs, str_replace( array( 'http:', 'https:' ), '', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js' ), array( 'jquery' ), '4.0.0', true );
+		 	}
+		} 
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wonkasoft-event-maps-admin.js', array( 'jquery' ), $this->version, false );
 
@@ -119,7 +138,7 @@ class Wonkasoft_Event_Maps_Admin {
 	 *
 	 * @since 1.0.0 [<Adds the admin page for the plugin settings>]
 	 */
-	public function wonkasoft_event_maps_admin() {
+	public function wonkasoft_event_maps_admin_display() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-display.php';
 	}
 

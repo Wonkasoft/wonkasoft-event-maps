@@ -2,3 +2,22 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+.wonkasoft-tools_page_wonkasoft_event_maps_settings_display, .wonkasoft_menu {
+	background: #f1f1f1;
+}
+
+.panel {
+	background: #fff;
+	margin: 15px;
+	border: 1px solid rgba(0, 0, 0, .2);
+	border-radius: 6px;
+	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .3);
+}
+
+.headings {
+	align-items: flex-end;
+}
+
+.title-text {
+	text-transform: uppercase;
+}

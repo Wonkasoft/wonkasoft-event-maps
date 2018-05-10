@@ -13,10 +13,34 @@
  */
 ?>
 
-<div class="container-fluid">
-	<div class="row">
-		<div class="col">
-			
-		</div>
-	</div>
-</div>
+<div class="wem-settings-wrap">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-8 panel">
+				<div class="row headings">
+					<div class="col-2 logo-area">
+						<img src="<?php echo plugins_url( "../img/WEM-logo.svg", __FILE__ ); ?>">
+					</div> <!-- /col-4 -->
+					<div class="col-6 title-area">
+						<h1 class="title-text"><?php echo WONKASOFT_EVENT_MAPS_NAME; ?></h1>
+					</div> <!-- /col-4 -->
+				</div> <!-- /row -->
+				<hr />
+				<div class="row content-area">
+					<div class="col-8">
+						<h4>Documentation for Wonkasoft Event Maps</h4>
+						<p>Shortcode Information - Instructions on how to use the Wonkasoft Event Maps plugin</p>
+						<p><strong>Default Shortcode</strong>
+						<code>[wonkasoft-event-maps]</code></p>
+						<h4>Please select your post type</h4>
+						<?php echo do_shortcode('[wonkasoft-event-maps]'); ?>
+						<p></p>
+						<h4>Description</h4>
+						<h4>Wonkasoft Event Maps was build to add a map using your event post types. You can add a map of all your post types anywhere that you uses shortcode on your site such as widgets, post, pages etc.</h4>
+						<p>If you have any questions, comments, or suggestions please send all inquiries to <a href="mail:support@wonkasoft.com">support@wonkasoft.com</a>. If you would like to <a href="https://paypal.me/Wonkasoft" target="_blank">donate</a> to support us please use this <a href="https://paypal.me/Wonkasoft" target="_blank">link</a></p>
+					</div> <!-- /col-4 -->
+				</div> <!-- /row -->
+			</div> <!-- /col-8 -->
+		</div> <!-- /row -->
+	</div> <!-- /container-fluid -->
+</div> <!-- /wem-settings-wrap -->
