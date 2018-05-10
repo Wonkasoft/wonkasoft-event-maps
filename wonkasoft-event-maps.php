@@ -36,9 +36,10 @@ if ( ! defined( 'WPINC' ) ) {
  * Rename this for your plugin and update it as you release new versions.
  */
 define( 'WONKASOFT_EVENT_MAPS_PATH', plugin_dir_path( __FILE__ ) );
-define( 'WONKASOFT_EVENT_MAPS_NAME', plugin_basename( dirname( __FILE__ ) ) );
+define( 'WONKASOFT_EVENT_MAPS_SLUG', plugin_basename( dirname( __FILE__ ) ) );
+define( 'WONKASOFT_EVENT_MAPS_NAME', 'Wonkasoft Event Maps' );
 define( 'WONKASOFT_EVENT_MAPS_BASENAME', plugin_basename( __FILE__ ) );
-define( 'WONKASOFT_EVENT_MAPS_IMG_PATH', plugins_url( WONKASOFT_EVENT_MAPS_NAME . '/admin/img' ) );
+define( 'WONKASOFT_EVENT_MAPS_IMG_PATH', plugins_url( WONKASOFT_EVENT_MAPS_SLUG . '/admin/img' ) );
 define( 'WONKASOFT_EVENT_MAPS_VERSION', '1.0.0' );
 
 /**
