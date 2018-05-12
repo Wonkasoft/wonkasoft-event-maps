@@ -185,6 +185,7 @@ class Wonkasoft_Event_Maps {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'init', $plugin_public, 'wonkasoft_event_maps_custom_search' );
 
 	}
 

@@ -21,7 +21,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 	$grab_events = get_posts( $args );
 	$locations = array();
 	foreach ($grab_events as $event) :
-		array_push( $locations, array( "map_to_link" => get_permalink( $event->ID ), "lat" => get_post_meta($event->ID)['venue_lat'][0], "lng" => get_post_meta($event->ID)['venue_lon'][0] ) );
+		array_push( $locations, array( "event_title" => get_post($event->ID)->post_title, "map_to_link" => get_permalink( $event->ID ), "lat" => get_post_meta($event->ID)['venue_lat'][0], "lng" => get_post_meta($event->ID)['venue_lon'][0] ) );
 	endforeach;
 	$output = '';
 	$atts = shortcode_atts( array(
@@ -37,7 +37,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 		
 		$output .= '<div id="map" class="map-size"></div>';
     $output .= '<script>';
-    	$output .= 'var map, infoWindow;';
+    	$output .= 'var map, infoWindow, eventWindow;';
       $output .= 'function initMap() {';
 
         $output .= "var map = new google.maps.Map(document.getElementById('map'), {";
@@ -54,20 +54,20 @@ function wonkasoft_event_maps_shortcode( $atts ) {
         // The map() method here has nothing to do with the Google Maps API.
       if ( !empty ( $locations ) ) :
         $output .= 'var markers = locations.map(function(location, i) {';
+      		$output .= 'eventWindow = new google.maps.InfoWindow({ maxWidth: 200 });';
           $output .= 'event = new google.maps.Marker({';
-            $output .= "position: location['locate'],";
-            $output .= 'label: labels[i % labels.length],';
-            $output .= 'map: map,';
-            $output .= "title: 'Get Event Info'";
+          $output .= "position: location['locate'],";
+          $output .= 'label: labels[i % labels.length],';
+          $output .= 'map: map,';
+          $output .= "title: 'Get Event Title'";
           $output .= '});';
-        $output .= '});';
+        	$output .= 'event.addListener( "click", function() { infoWindow.close(); eventWindow.open(map, this, eventWindow.setContent( "<strong>Event Name</strong>: <br />" + location["e_title"] ) ); });';
+        	$output .= '});';
 
-        // Add a marker clusterer to manage the markers.
-        $output .= 'var markerCluster = new MarkerClusterer(map, markers,';
-            $output .= "{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});";
           endif;
+          $output .= 'map.addListener( "click", function() { eventWindow.close(); });';
           $output .= 'infoWindow = new google.maps.InfoWindow;';
-
+          
         // Try HTML5 geolocation.
         $output .= 'if (navigator.geolocation) {';
           $output .= 'navigator.geolocation.getCurrentPosition(function(position) {';
@@ -93,12 +93,14 @@ function wonkasoft_event_maps_shortcode( $atts ) {
       $output .= 'var locations = [';
       foreach ($locations as $location ):
       	if ( $location == end( $locations ) ) :
-      		$output .= '{ link: "' . $location["map_to_link"] . '",';
-        		$output .= 'locate: {lat: ' . $location["lat"] . ', lng: ' . $location["lng"] . '}';
+      		$output .= '{ e_title: "' . $location["event_title"] . '",';
+      		$output .= 'link: "' . $location["map_to_link"] . '",';
+      		$output .= 'locate: {lat: ' . $location["lat"] . ', lng: ' . $location["lng"] . '}';
       		$output .= '}';
       	else :
-        	$output .= '{ link: "' . $location["map_to_link"] . '",';
-        		$output .= 'locate: {lat: ' . $location["lat"] . ', lng: ' . $location["lng"] . '}';
+        	$output .= '{ e_title: "' . $location["event_title"] . '",';
+        	$output .= 'link: "' . $location["map_to_link"] . '",';
+      		$output .= 'locate: {lat: ' . $location["lat"] . ', lng: ' . $location["lng"] . '}';
       		$output .= '},';
       	endif;
       endforeach;

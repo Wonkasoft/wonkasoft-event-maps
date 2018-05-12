@@ -100,4 +100,13 @@ class Wonkasoft_Event_Maps_Public {
 
 	}
 
+	/**
+	 * [wonkasoft_event_maps_custom_search The adds a custom search form for events]
+	 *
+	 * @since 1.0.0 [<Adds custom search form for events>]
+	 */
+	public function wonkasoft_event_maps_custom_search() {
+		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-custom-search.php';
+	}
+
 }
