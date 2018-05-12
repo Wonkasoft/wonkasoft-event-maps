@@ -61,9 +61,7 @@ public function __construct() {
 }
 
 public function create_wem_fields() {
-	var_dump('test1');
 	if ( function_exists( 'add_meta_box' ) ) :
-		var_dump('test inside');
 			add_meta_box( 'wem-field', __( 'Wonkasoft Event Maps Selection', 'text_domain' ), array( $this, 'wonkasoft_event_maps_Meta_Box_layouts' ), 'wonkasoft_event_maps_settings_display', 'normal', 'high' );
 	endif;
 } // end create_wem_fields
