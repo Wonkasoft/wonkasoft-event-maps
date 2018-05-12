@@ -73,17 +73,17 @@ class Wonkasoft_Event_Maps_Admin {
 		 * class.
 		 */
 		$style = 'bootstrap';
-		if( ! wp_style_is( $style, 'enqueued' ) &&  ! wp_style_is( $style, 'done' ) ) {
+		if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_settings_display' || $page == 'toplevel_page_wonkasoft_menu' ) {
+			if( ! wp_style_is( $style, 'enqueued' ) &&  ! wp_style_is( $style, 'done' ) ) {
 			// Check page to load bootstrapjs only on settings page
-			if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_settings_display' || $page == 'toplevel_page_wonkasoft_menu' ) {
 	    	// Enqueue bootstrap CSS
-			wp_enqueue_style( $style, str_replace( array( 'http:', 'https:' ), '', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css'), array(), '4.0.0', 'all');
+				wp_enqueue_style( $style, str_replace( array( 'http:', 'https:' ), '', plugin_dir_url( __FILE__ ) . 'css/bootstrap.min.css'), array(), '4.0.0', 'all');
 
-			wp_enqueue_style( 'fontawesome', 'https://use.fontawesome.com/releases/v5.0.12/css/all.css', array(), 'all');
+				wp_enqueue_style( 'fontawesome', 'https://use.fontawesome.com/releases/v5.0.12/css/all.css', array(), 'all');
 			}
-		}
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wonkasoft-event-maps-admin.css', array(), $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wonkasoft-event-maps-admin.css', array(), $this->version, 'all' );
+		}
 
 	}
 
@@ -108,15 +108,16 @@ class Wonkasoft_Event_Maps_Admin {
 		
 		// Check to see if bootstrap js is already enqueue before setting the enqueue
 		$bootstrapjs = 'bootstrap-js';
-		if ( ! wp_script_is( $bootstrapjs, 'enqueued' ) && ! wp_script_is($bootstrapjs, 'done' ) ) {
-			// Check page to load bootstrapjs only on settings page
-		 	if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_settings_display' || $page == 'toplevel_page_wonkasoft_menu' ) {
+	 	if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_settings_display' || $page == 'toplevel_page_wonkasoft_menu' ) {
+			if ( ! wp_script_is( $bootstrapjs, 'enqueued' ) && ! wp_script_is($bootstrapjs, 'done' ) ) {
+				// Check page to load bootstrapjs only on settings page
 			 	// Enqueue bootstrap js
 				wp_enqueue_script( $bootstrapjs, str_replace( array( 'http:', 'https:' ), '', plugin_dir_url( __FILE__ ) . 'js/bootstrap.min.js' ), array( 'jquery' ), '4.0.0', true );
 		 	}
-		} 
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wonkasoft-event-maps-admin.js', array( 'jquery' ), $this->version, false );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wonkasoft-event-maps-admin.js', array( 'jquery' ), $this->version, false );
+		} 
+		
 
 	}
 

@@ -21,3 +21,11 @@
 .title-text {
 	text-transform: uppercase;
 }
+
+.map-size {
+	height: 450px;
+}
+
+#shortcode-copy {
+ cursor: pointer;
+}
