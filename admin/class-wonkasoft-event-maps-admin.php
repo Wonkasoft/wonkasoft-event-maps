@@ -72,7 +72,6 @@ class Wonkasoft_Event_Maps_Admin {
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		var_dump($page);
 		$style = 'bootstrap';
 		if( ! wp_style_is( $style, 'enqueued' ) &&  ! wp_style_is( $style, 'done' ) ) {
 			// Check page to load bootstrapjs only on settings page
