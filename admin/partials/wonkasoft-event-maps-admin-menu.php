@@ -26,7 +26,7 @@ add_menu_page(
 'manage_options',
 'wonkasoft_menu',
 array( $this,'wonkasoft_event_maps_admin_display' ),
-plugins_url( "/img/wonka-logo-2.svg", __FILE__ ),
+WONKASOFT_EVENT_MAPS_IMG_PATH . "/wonka-logo-2.svg",
 100
 );
 
