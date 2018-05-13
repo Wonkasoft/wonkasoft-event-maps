@@ -144,7 +144,7 @@ class Wonkasoft_Event_Maps_Admin {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-display.php';
 	}	
 
-	public function wonkasoft_event_maps_admin_display() {
+	public function wonkasoft_event_maps_search_form() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-search-form.php';
 	}
 
