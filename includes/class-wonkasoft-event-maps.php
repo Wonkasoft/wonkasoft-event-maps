@@ -127,12 +127,6 @@ class Wonkasoft_Event_Maps {
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wonkasoft-event-maps-build.php';
 
-		/**
-		 * The class responsible for building map and setting shortcodes.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wonkasoft-event-maps-custom-field.php';
-
-
 		$this->loader = new Wonkasoft_Event_Maps_Loader();
 
 	}
@@ -169,6 +163,7 @@ class Wonkasoft_Event_Maps {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wonkasoft_event_maps_add_action_links' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'wonkasoft_event_maps_admin_menu' );
+		$this->loader->add_action( 'admin_init', $plugin_admin, 'wonkasoft_event_maps_register_settings' );
 		$this->loader->add_action( 'wp', $plugin_admin, 'wonkasoft_event_maps_search_form' );
 
 	}
