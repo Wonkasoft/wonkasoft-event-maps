@@ -46,7 +46,6 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 	);
 	$post_types = get_post_types();
 	$grab_events = get_posts( $args );
-  var_dump($grab_events);
 	$locations = array();
 	foreach ($grab_events as $event) :
 		array_push( $locations, array( "event_title" => get_post($event->ID)->post_title, "map_to_link" => get_permalink( $event->ID ), "lat" => get_post_meta($event->ID)['venue_lat'][0], "lng" => get_post_meta($event->ID)['venue_lon'][0] ) );
