@@ -6,3 +6,25 @@
 .map-size {
 	height: 450px;
 }
+
+#wem-search-form {
+	width: 500px;
+	margin: 8px auto;
+}
+
+#wem-search-form input[type="text"] {
+	line-height: 1.2;
+	font-size: 1rem;
+	height: 50px;
+	width: 80%;
+	margin: 0;
+}
+
+#wem-search-submit {
+	line-height: 1.2;
+	font-size: 1rem;
+	height: 50px;
+	width: 20%;
+	vertical-align: top;
+	padding: 10px 15px;
+}

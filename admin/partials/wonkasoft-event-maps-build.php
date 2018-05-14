@@ -165,9 +165,9 @@ function wonkasoft_event_maps_search_shortcode( $atts ) {
   ob_start();
     $output .= '<form role="search" method="get" id="wem-search-form" class="searchform" action="' . home_url( '/' ) . '" >';
     $output .= '<div><label class="screen-reader-text" for="s">' . __( 'Search for:' ) . '</label>';
-    $output .= '<input type="text" value="' . get_search_query() . '" name="s" id="s" />';
-    $output .= '<input type="hidden" value="'.get_option( 'wem_event_post_type' ).'" name="post_type" id="post_type" />';
-    $output .= '<input type="submit" id="wem-search-submit" value="'. esc_attr__( 'Search' ) .'" />';
+    $output .= '<input type="text" class="wem_input_text" value="' . get_search_query() . '" name="s" id="s" placeholder="Search for events..." />';
+    $output .= '<input type="hidden" value="'. get_option( 'wem_event_post_type' ) . '" name="post_type" id="post_type" />';
+    $output .= '<input type="submit" id="wem-search-submit" value="' . esc_attr__( 'Search' ) . '" />';
     $output .= '</div>';
     $output .= '</form>';
 
