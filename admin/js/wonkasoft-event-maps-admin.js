@@ -1,20 +1,26 @@
 (function( $ ) {
 	'use strict';
 
-	window.onload = function() {
-		var quick_copy = document.getElementById('shortcode-copy'),
-		code_box = document.getElementById('shortcode-snippet');
-				console.log(code_box);
-		
-
-		if ( quick_copy ) {
-			quick_copy.addEventListener( 'click', function() {
-				console.log(code_box.value);
-				code_box.select();
-				console.log(code_box.select());
-				document.execCommand('Copy');
-			});
-		}
-	}
+	
 
 })( jQuery );
+
+function copyToClipboard() {
+	/* Get the text field */
+	var copyText = document.getElementById("wem-shortcode-input");
+
+	var copyMessage = document.getElementById("copyMessage");
+	
+	/* Select the text field */
+	copyText.select();
+	
+	/* Copy the text inside the text field */
+	document.execCommand("Copy");
+	
+	copyMessage.setAttribute("style","display: inline;margin-left:10px;");
+
+	setTimeout(function() {
+	copyMessage.setAttribute("style","display: none");
+	}, 1000);	
+
+}

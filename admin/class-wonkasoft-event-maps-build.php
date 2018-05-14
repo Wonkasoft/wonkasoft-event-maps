@@ -4,18 +4,24 @@
  *
  * This is used to build slider and shortcodes.
  *
- * @since      1.0.1
- * @package    Wonka_Slide
- * @subpackage wonka-slide/inc
- * @author     Wonkasoft <info@wonkasoft.com>
+ * @link       https://wonkasoft.com
+ * @since      1.0.0
+ * @package    Wonkasoft_Event_Maps
+ * @subpackage Wonkasoft_Event_Maps/admin/partials
  */
+
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
 
 function wonkasoft_event_maps_shortcode( $atts ) {
 
 	global $post;
+  $selected_post_type = ( get_option('wem_event_post_type') ) ? esc_attr(get_option( 'wem_event_post_type' ) ) : 'no post type selected';
+  if ( $selected_post_type == 'no post type selected') :
+    $output = $selected_post_type;
+    return $output;
+  else :
 	$args = array(
-		'post_type' => 'eventbrite_events',
+		'post_type' => $selected_post_type,
 	);
 	$post_types = get_post_types();
 	$grab_events = get_posts( $args );
@@ -61,7 +67,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
           $output .= 'map: map,';
           $output .= "title: 'Get Event Title'";
           $output .= '});';
-        	$output .= 'event.addListener( "click", function() { infoWindow.close(); eventWindow.open(map, this, eventWindow.setContent( "<strong>Event Name</strong>: <br />" + location["e_title"] ) ); });';
+        	$output .= 'event.addListener( "click", function() { infoWindow.close(); eventWindow.open(map, this, eventWindow.setContent( "<strong>Event Name</strong>: <br />" + location["e_title"] + "<br /><a href=" + location["link"] + ">Show Event Details</a>") ); });';
         	$output .= '});';
 
           endif;
@@ -113,14 +119,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
                                     'Error: Your browser doesn\'t support geolocation.');
               infoWindow.open(map);
             }";
-      $output .= "var layer = new google.maps.FusionTablesLayer({
-                            query: {
-                              select: 'address',
-                              from: '1d7qpn60tAvG4LEg4jvClZbc1ggp8fIGGvpMGzA',
-                              where: 'ridership > 5000'
-                            }
-                          });
-                          layer.setMap(map);";
+      
     $output .= '</script>';
     $output .= '<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">';
     $output .= '</script>';
@@ -131,6 +130,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 		$output .= ob_get_clean();
 
 		return $output;
+endif;
 }
 add_shortcode( 'wonkasoft-event-maps', 'wonkasoft_event_maps_shortcode', 30, 1);
 
@@ -146,11 +146,11 @@ function wonkasoft_event_maps_search_shortcode( $atts ) {
   ), $atts );
 
   ob_start();
-    $output .= '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( '/' ) . '" >';
+    $output .= '<form role="search" method="get" id="wem-search-form" class="searchform" action="' . home_url( '/' ) . '" >';
     $output .= '<div><label class="screen-reader-text" for="s">' . __( 'Search for:' ) . '</label>';
     $output .= '<input type="text" value="' . get_search_query() . '" name="s" id="s" />';
-    $output .= '<input type="hidden" value="'.get_option( '' ).'" name="post_type" id="post_type" />';
-    $output .= '<input type="submit" id="search-submit" value="'. esc_attr__( 'Search' ) .'" />';
+    $output .= '<input type="hidden" value="'.get_option( 'wem_event_post_type' ).'" name="post_type" id="post_type" />';
+    $output .= '<input type="submit" id="wem-search-submit" value="'. esc_attr__( 'Search' ) .'" />';
     $output .= '</div>';
     $output .= '</form>';
 
@@ -159,4 +159,4 @@ function wonkasoft_event_maps_search_shortcode( $atts ) {
   return $output;
 }
 
-add_shortcode( 'wonkasoft-event-maps-search', 'wonkasoft_event_maps_search_shortcode', 30, 1);
+add_shortcode( 'wonkasoft-event-maps-search', 'wonkasoft_event_maps_search_shortcode', 31, 1);

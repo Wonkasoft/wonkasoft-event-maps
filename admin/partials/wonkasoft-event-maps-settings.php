@@ -9,12 +9,13 @@
 * @package    Wonkasoft_Event_Maps
 * @subpackage wonkasoft-event-maps/admin/partials
 */
+
 /**
  * This creates settings area that is displayed on options page
 **/
 add_settings_section( 
 	'wonkasoft_event_maps_selected_posttype', 
-	'For Selected Post Type', 
+	'Select Custom Post Type', 
 	null, 
 	'wonkasoft_event_maps_admin_display'
 );
@@ -23,7 +24,7 @@ add_settings_section(
  */
 add_settings_field(
 	'wem_event_post_type',
-	'Selected Post Type',
+	'Select Post Type',
 	'wem_event_post_type',
 	'wonkasoft_event_maps_admin_display',
 	'wonkasoft_event_maps_selected_posttype'
@@ -50,33 +51,33 @@ function wem_event_post_type( $args ) {
 	}
 
 	if ( $post_types ) :
-		$wem_event_post_type_option = ( get_option( 'wem_event_post_type' ) ) ? esc_attr( get_option( 'wem_event_post_type' ) ) : 'Please select a custom post type';
-		if ( $wem_event_post_type_option != 'Please select a custom post type' ) :
-			?>
-			<select name="post_type_selector">
-				<option value="<?php $wem_event_post_type_option; ?>"><?php $wem_event_post_type_option; ?></option>
-			<?php
-		else : 
-			?>
-			<select name="post_type_selector">
-				<option value="<?php $wem_event_post_type_option; ?>"><?php $wem_event_post_type_option; ?></option>
-		<?php
-		endif;
-		/**
-		 * [$key all custom post types]
-		 * @var [custom post types]
-		 */
-		foreach ( $post_types as $key => $value ) {
-			echo '<option value="'.$value.'">'.$value.'</option>';
-		}
+		$wem_event_post_type_option = ( get_option( 'wem_event_post_type' ) ) ? esc_attr( get_option( 'wem_event_post_type' ) ) : 'Select a custom post type';
 		?>
-		</select>
+			<select name="wem_event_post_type" id="wem_event_post_type">
 		<?php
+		if ( $wem_event_post_type_option !== 'Select a custom post type' ) :
+			?>
+				<option value="">Disable</option>
+				<option value="<?php echo $wem_event_post_type_option; ?>" selected><?php echo $wem_event_post_type_option; ?></option>
+			<?php
+		elseif ( $post_types ) : 
+			?>
+				<option value="<?php echo $wem_event_post_type_option; ?>"><?php echo $wem_event_post_type_option; ?></option>
+			<?php
+			/**
+			 * [$key all custom post types]
+			 * @var [custom post types]
+			 */
+			foreach ( $post_types as $key => $value ) {
+				echo '<option value="'.$value.'">'.$value.'</option>';
+			}
+		endif;
 	else :
 		?>
-		<select name="post_type_selector">';
 			<option value="no-custom-post-types">No Custom Post Types</option>
-	    </select>
 	    <?php
 	endif;
+	?>
+	    </select>
+	<?php
 }
