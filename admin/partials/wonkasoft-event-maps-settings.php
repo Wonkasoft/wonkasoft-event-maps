@@ -50,15 +50,33 @@ function wem_event_post_type( $args ) {
 	}
 
 	if ( $post_types ) :
-		echo '<select name="post_type_selector">';
-			echo '<option value="'.selected(get_option('wem_event_post_type') ).'">'.get_option("em_event_post_type").'</option>';
+		$wem_event_post_type_option = ( get_option( 'wem_event_post_type' ) ) ? esc_attr( get_option( 'wem_event_post_type' ) ) : 'Please select a custom post type';
+		if ( $wem_event_post_type_option != 'Please select a custom post type' ) :
+			?>
+			<select name="post_type_selector">
+				<option value="<?php $wem_event_post_type_option; ?>"><?php $wem_event_post_type_option; ?></option>
+			<?php
+		else : 
+			?>
+			<select name="post_type_selector">
+				<option value="<?php $wem_event_post_type_option; ?>"><?php $wem_event_post_type_option; ?></option>
+		<?php
+		endif;
+		/**
+		 * [$key all custom post types]
+		 * @var [custom post types]
+		 */
 		foreach ( $post_types as $key => $value ) {
 			echo '<option value="'.$value.'">'.$value.'</option>';
 		}
-		echo '</select>';
+		?>
+		</select>
+		<?php
 	else :
-		echo '<select name="post_type_selector">';
-			echo '<option value="no-custom-post-types">No Custom Post Types</option>';
-	    echo '</select>';
+		?>
+		<select name="post_type_selector">';
+			<option value="no-custom-post-types">No Custom Post Types</option>
+	    </select>
+	    <?php
 	endif;
 }
