@@ -23,7 +23,7 @@ add_settings_section(
  */
 add_settings_field(
 	'wonkasoft_selected_post_type',
-	'Selected Post Type',
+	'Select Custom Post Type',
 	'wem_selected_post_type_selector',
 	'wonkasoft_event_maps_admin_display',
 	'wonkasoft_event_maps_selected_posttype'
@@ -46,12 +46,16 @@ function wem_selected_post_type_selector() {
 		unset( $post_types[$value] );
 	}
 
-	if ( $post_types ) {
+	if ( $post_types ) :
 		echo '<select name="post_type_selector">';
-			     echo '<option value="'.selected(get_option('wem_setting_group'), 'qscutter').'">'.get_option("wem_setting_group").'</option>';
-		foreach ($post_types as $key => $value) {
-			     echo '<option value="'.$value.'">'.$value.'</option>';
+			echo '<option value="'.selected(get_option('wem_event_post_type') ).'">'.get_option("em_event_post_type").'</option>';
+		foreach ( $post_types as $key => $value ) {
+			echo '<option value="'.$value.'">'.$value.'</option>';
 		}
-			   echo '</select>';
-	}
+		echo '</select>';
+	else :
+		echo '<select name="post_type_selector">';
+			echo '<option value="no-custom-post-types">No Custom Post Types</option>';
+	    echo '</select>';
+	endif;
 }
