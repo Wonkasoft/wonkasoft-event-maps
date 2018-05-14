@@ -9,12 +9,13 @@
 * @package    Wonkasoft_Event_Maps
 * @subpackage wonkasoft-event-maps/admin/partials
 */
+
 /**
  * This creates settings area that is displayed on options page
 **/
 add_settings_section( 
 	'wonkasoft_event_maps_selected_posttype', 
-	'For Selected Post Type', 
+	'Select Custom Post Type', 
 	null, 
 	'wonkasoft_event_maps_admin_display'
 );
@@ -23,7 +24,7 @@ add_settings_section(
  */
 add_settings_field(
 	'wem_event_post_type',
-	'Selected Post Type',
+	'Select Post Type',
 	'wem_event_post_type',
 	'wonkasoft_event_maps_admin_display',
 	'wonkasoft_event_maps_selected_posttype'
@@ -116,4 +117,5 @@ function wem_dropdown_post_types( $args = '' ) {
 		echo $html;
 	}
 	return $html;
+
 }

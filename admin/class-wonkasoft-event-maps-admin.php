@@ -5,21 +5,12 @@
  *
  * @link       https://wonkasoft.com
  * @since      1.0.0
- *
- * @package    Wonkasoft_Event_Maps
- * @subpackage Wonkasoft_Event_Maps/admin
- */
-
-/**
- * The admin-specific functionality of the plugin.
- *
- * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
- *
  * @package    Wonkasoft_Event_Maps
  * @subpackage Wonkasoft_Event_Maps/admin
  * @author     Wonkasoft <support@wonkasoft.com>
+ * 
  */
+
 class Wonkasoft_Event_Maps_Admin {
 
 	/**
@@ -108,7 +99,7 @@ class Wonkasoft_Event_Maps_Admin {
 		
 		// Check to see if bootstrap js is already enqueue before setting the enqueue
 		$bootstrapjs = 'bootstrap-js';
-	 	if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_settings_display' || $page == 'toplevel_page_wonkasoft_menu' ) {
+	 	if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_admin_display' || $page == 'toplevel_page_wonkasoft_menu' ) {
 			if ( ! wp_script_is( $bootstrapjs, 'enqueued' ) && ! wp_script_is($bootstrapjs, 'done' ) ) {
 				// Check page to load bootstrapjs only on settings page
 			 	// Enqueue bootstrap js
@@ -148,9 +139,5 @@ class Wonkasoft_Event_Maps_Admin {
 	public function wonkasoft_event_maps_admin_display() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-display.php';
 	}	
-
-	public function wonkasoft_event_maps_search_form() {
-		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-search-form.php';
-	}
 
 }
