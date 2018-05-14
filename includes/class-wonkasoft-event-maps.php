@@ -125,7 +125,7 @@ class Wonkasoft_Event_Maps {
 		/**
 		 * The class responsible for building map and setting shortcodes.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-wonkasoft-event-maps-build.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/wonkasoft-event-maps-build.php';
 
 		$this->loader = new Wonkasoft_Event_Maps_Loader();
 

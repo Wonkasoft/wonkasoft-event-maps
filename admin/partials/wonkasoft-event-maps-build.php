@@ -16,11 +16,29 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 
 	global $post;
   $selected_post_type = ( get_option('wem_event_post_type') ) ? esc_attr(get_option( 'wem_event_post_type' ) ) : 'no post type selected';
+  $selected_post_type_check = false;
   if ( $selected_post_type == 'no post type selected') :
+    
     $output = $selected_post_type;
     return $output;
+
   else :
-	$args = array(
+
+    $args = array(
+      'post_type' => $selected_post_type,
+    );
+    $grab_events = get_posts( $args );
+    foreach ($grab_events as $event) :
+      $event_meta_data = get_post_meta( $event->ID );
+      if ( get_post_meta($event->ID)['venue_lat'][0] ) {
+        $selected_post_type_check = true;
+      }
+    endforeach;
+  endif;
+
+  if ( $selected_post_type_check ) :
+	
+  $args = array(
 		'post_type' => $selected_post_type,
 	);
 	$post_types = get_post_types();
@@ -114,14 +132,10 @@ function wonkasoft_event_maps_shortcode( $atts ) {
       endif;
       $output .= "function handleLocationError(browserHasGeolocation, infoWindow, pos) {
               infoWindow.setPosition(pos);
-              infoWindow.setContent(browserHasGeolocation ?
-                                    'Error: The Geolocation service failed.' :
-                                    'Error: Your browser doesn\'t support geolocation.');
+              infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
               infoWindow.open(map);
             }";
       
-    $output .= '</script>';
-    $output .= '<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">';
     $output .= '</script>';
     $output .= '<script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfppUilFLzZB_rGxkx29qp3tWroStsq8&callback=initMap">
