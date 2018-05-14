@@ -14,7 +14,7 @@ Wonkasoft Event Maps is a WordPress plugin that can allow for event locations to
 
 == Description ==
 
-Wonkasoft Event Maps is a WordPress plugin that can allow for event locations to quickly be synced with and placed upon a google map.
+Wonkasoft Event Maps is a WordPress plugin that can allow for event locations to quickly be synced with and placed upon a google map. This plugin currently only works with Eventbrite plugin.
 
 == Installation ==
 
@@ -28,21 +28,17 @@ e.g.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= What Event plugins does WEM work with? =
 
-An answer to that question.
+Currently WEM only works with Eventbrite Event Plugin.
 
-= What about foo bar? =
+= Will WEM ever work with other event plugins? =
 
-Answer to foo bar dilemma.
+Yes, we will be continuing to add more support for other popular event plugins. However, if we are informed by our users that they would like support for a specific plugin, we would be happy to help with such expansion. 
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. screenshot-1.jpeg
 
 == Changelog ==
 
