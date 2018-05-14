@@ -22,16 +22,19 @@ add_settings_section(
  * This creates settings field that is displayed on options page
  */
 add_settings_field(
-	'wonkasoft_selected_post_type',
-	'Select Custom Post Type',
-	'wem_selected_post_type_selector',
+	'wem_event_post_type',
+	'Selected Post Type',
+	'wem_event_post_type',
 	'wonkasoft_event_maps_admin_display',
 	'wonkasoft_event_maps_selected_posttype'
 );
 
-register_setting( 'wem_setting_post_type_group', 'wem_event_post_type' );
+register_setting( 
+	'wem_setting_group', 
+	'wem_event_post_type' 
+);
 
-function wem_selected_post_type_selector() {
+function wem_event_post_type( $args ) {
 	$post_types = get_post_types();
 	$core_types_to_remove = array(
 		'post',
