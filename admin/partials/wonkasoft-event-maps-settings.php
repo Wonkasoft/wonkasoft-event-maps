@@ -35,7 +35,39 @@ register_setting(
 );
 
 function wem_event_post_type( $args ) {
-	$post_types = get_post_types();
+	$wem_event_post_type_option = ( get_option( 'wem_event_post_type' ) ) ? esc_attr( get_option( 'wem_event_post_type' ) ) : '';
+
+	$dropdown_args = array(
+				'depth' => 0,
+				'selected' => $wem_event_post_type_option,
+				'name' => 'wem_event_post_type',
+				'id' => 'wem_event_post_type',
+				'class' => 'wem-post-type-select',
+				'show_option_none' => 'Select a custom post type',
+				'option_none_value' => '',
+			);
+
+	wem_dropdown_post_types( $dropdown_args );
+}
+
+function wem_dropdown_post_types( $args = '' ) {
+	
+	$defaults = array(
+		'depth' => 0,
+		'selected' => 0,
+		'echo' => 1,
+		'name' => 'post_type_id',
+		'id' => '',
+		'class' => '',
+		'show_option_none' => '',
+		'show_option_no_change' => '',
+		'option_none_value' => '',
+		'value_field' => 'ID',
+	);
+
+	$r = wp_parse_args( $args, $defaults );
+	$custom_post_types = get_post_types();
+
 	$core_types_to_remove = array(
 		'post',
 		'page',
@@ -46,37 +78,42 @@ function wem_event_post_type( $args ) {
 		'customize_changeset',
 		'oembed_cache' );
 	foreach ( $core_types_to_remove as $key => $value) {
-		unset( $post_types[$value] );
+		unset( $custom_post_types[$value] );
 	}
 
-	if ( $post_types ) :
-		$wem_event_post_type_option = ( get_option( 'wem_event_post_type' ) ) ? esc_attr( get_option( 'wem_event_post_type' ) ) : 'Please select a custom post type';
-		if ( $wem_event_post_type_option != 'Please select a custom post type' ) :
-			?>
-			<select name="post_type_selector">
-				<option value="<?php $wem_event_post_type_option; ?>"><?php $wem_event_post_type_option; ?></option>
-			<?php
-		else : 
-			?>
-			<select name="post_type_selector">
-				<option value="<?php $wem_event_post_type_option; ?>"><?php $wem_event_post_type_option; ?></option>
-		<?php
-		endif;
-		/**
-		 * [$key all custom post types]
-		 * @var [custom post types]
-		 */
-		foreach ( $post_types as $key => $value ) {
-			echo '<option value="'.$value.'">'.$value.'</option>';
+	$output = '';
+
+	if ( empty( $r['id']) ) {
+		$r['id'] = $r['name'];
+	}
+
+	if ( ! empty( $custom_post_types ) ) {
+		$class = '';
+		if ( ! empty( $r['class'] ) ) {
+			$class = " class='" . esc_attr( $r['class'] ) . "'";
 		}
-		?>
-		</select>
-		<?php
-	else :
-		?>
-		<select name="post_type_selector">';
-			<option value="no-custom-post-types">No Custom Post Types</option>
-	    </select>
-	    <?php
-	endif;
+
+		$output = "<select name='" . esc_attr( $r['name'] ) . "'" . $class . " id='" . esc_attr( $r['id'] ) . "'>\n";
+		if ( $r['show_option_no_change'] ) { 
+			$output .= "\t<option value=\"-1\">" . esc_attr( $r["show_option_no_change"] ) . "</option>\n";
+		}
+		if ( $r["show_option_none"] ) {
+			$output .= "\t<option value=\"" . esc_attr( $r["option_none_value"] ) . '">' . $r["show_option_none"] . "</option>\n";
+		}
+		foreach ($custom_post_types as $name_type => $post_type) {
+			$output .= sprintf("\t".'<option value="%s" %s>%s</option>'."\n",
+								esc_attr($name_type),
+								selected($r['selected'], $name_type, false),
+								$post_type
+							);
+		}
+		$output .= "</select>\n";
+	}
+
+	$html = apply_filters( 'wem_dropdown_post_types', $output, $r, $custom_post_types );
+
+	if ( $r['echo'] ) {
+		echo $html;
+	}
+	return $html;
 }
