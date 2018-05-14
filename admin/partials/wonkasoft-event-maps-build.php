@@ -43,6 +43,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 	
   $args = array(
 		'post_type' => $selected_post_type,
+    'posts_per_page'   => 52,
 	);
 	$post_types = get_post_types();
 	$grab_events = get_posts( $args );
@@ -53,7 +54,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 	$output = '';
 	$atts = shortcode_atts( array(
 		'id' => 'wonkasoft-event-maps-main',
-		'event_count' => '3',
+		'event_count' => '100',
 		'container_class' => 'wonkasoft-event-maps-container',
 		'list_class' => 'wonkasoft-event-maps-list',
 		'item_class' => 'wonkasoft-event-maps-item',
@@ -73,7 +74,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
         $output .= '});';
 
         // Create an array of alphabetical characters used to label the markers.
-        $output .= "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';";
+        $output .= "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';";
 
         // Add some markers to the map.
         // Note: The code uses the JavaScript Array.prototype.map() method to
