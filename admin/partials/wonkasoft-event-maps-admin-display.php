@@ -32,6 +32,11 @@
 						<p>Shortcode Information - Instructions on how to use the Wonkasoft Event Maps plugin</p>
 						<p><strong>Default Shortcode</strong>
 						<code>[wonkasoft-event-maps]</code><input id="shortcode-snippet" type="hidden" value="[wonkasoft-event-maps]" /> <i id="shortcode-copy" class="fas fa-copy"></i> </p>
+						<form method="post" action="options.php">
+						    <?php settings_fields( 'wem_setting_group' ); ?>
+						    <?php do_settings_sections( 'wonkasoft_event_maps_admin_display' ); ?>
+						    <?php submit_button(); ?>
+						</form>
 						<h4>Here is the map that the shorcode will display</h4>
 						<?php echo do_shortcode('[wonkasoft-event-maps]'); ?>
 						<p></p>

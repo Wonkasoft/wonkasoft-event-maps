@@ -133,3 +133,30 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 		return $output;
 }
 add_shortcode( 'wonkasoft-event-maps', 'wonkasoft_event_maps_shortcode', 30, 1);
+
+
+function wonkasoft_event_maps_search_shortcode( $atts ) {
+
+  $output = '';
+  $atts = shortcode_atts( array(
+    'id' => 'wonkasoft-event-maps-search',
+    'container_class' => 'wonkasoft-event-search-container',
+    'list_class' => 'wonkasoft-event-search-list',
+    'item_class' => 'wonkasoft-event-search-item',
+  ), $atts );
+
+  ob_start();
+    $output .= '<form role="search" method="get" id="searchform" class="searchform" action="' . home_url( '/' ) . '" >';
+    $output .= '<div><label class="screen-reader-text" for="s">' . __( 'Search for:' ) . '</label>';
+    $output .= '<input type="text" value="' . get_search_query() . '" name="s" id="s" />';
+    $output .= '<input type="hidden" value="'.get_option( '' ).'" name="post_type" id="post_type" />';
+    $output .= '<input type="submit" id="search-submit" value="'. esc_attr__( 'Search' ) .'" />';
+    $output .= '</div>';
+    $output .= '</form>';
+
+  $output .= ob_get_clean();
+
+  return $output;
+}
+
+add_shortcode( 'wonkasoft-event-maps-search', 'wonkasoft_event_maps_search_shortcode', 30, 1);

@@ -126,6 +126,11 @@ class Wonkasoft_Event_Maps_Admin {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-menu.php';
 	}
 
+	// Builds the Admin register setting for the plugin
+	public function wonkasoft_event_maps_register_settings() {
+		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-settings.php';
+	}
+
 	/**
 	 * [wonkasoft_event_maps_add_action_links This adds the action links in the plugin area of the dashboard]
 	 *

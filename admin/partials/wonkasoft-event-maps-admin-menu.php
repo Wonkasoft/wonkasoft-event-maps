@@ -55,13 +55,4 @@ add_submenu_page(
 array( $this,'wonkasoft_event_maps_admin_display' )
 );
 
-$args = array(
-  'type'                        => 'string',
-  'description'             => '',
-  'sanitize_callback'   => 'wem_selected_post_type',
-  'show_in_rest'          => false
-);
-
-register_setting( 'wem_setting_group', 'wem_event_post_type', $args );
-
 }
