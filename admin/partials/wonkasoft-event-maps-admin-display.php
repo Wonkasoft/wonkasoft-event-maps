@@ -33,7 +33,7 @@
 						<p><strong>Default Shortcode</strong>
 						<code>[wonkasoft-event-maps]</code><input id="shortcode-snippet" type="hidden" value="[wonkasoft-event-maps]" /> <i id="shortcode-copy" class="fas fa-copy"></i> </p>
 						<form method="post" action="options.php">
-						    <?php settings_fields( 'wem_setting_post_type_group' ); ?>
+						    <?php settings_fields( 'wem_setting_group' ); ?>
 						    <?php do_settings_sections( 'wonkasoft_event_maps_admin_display' ); ?>
 						    <?php submit_button(); ?>
 						</form>
