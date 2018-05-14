@@ -29,10 +29,14 @@ function wonkasoft_event_maps_shortcode( $atts ) {
     );
     $grab_events = get_posts( $args );
     foreach ($grab_events as $event) :
-      if ( $selected_post_type === 'eventbrite_events' ) {
+      if ( $selected_post_type == 'eventbrite_events' ) :
         $selected_post_type_check = true;
-      }
+      endif;
     endforeach;
+    if ( !$selected_post_type_check ) {
+      $output = 'Please select Eventbrite post type.';
+      return $output;
+    }
   endif;
 
   if ( $selected_post_type_check ) :
