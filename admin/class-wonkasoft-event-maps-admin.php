@@ -99,7 +99,7 @@ class Wonkasoft_Event_Maps_Admin {
 		
 		// Check to see if bootstrap js is already enqueue before setting the enqueue
 		$bootstrapjs = 'bootstrap-js';
-	 	if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_admin_display' || $page == 'toplevel_page_wonkasoft_menu' ) {
+	 	if ( $page == 'wonkasoft-tools_page_wonkasoft_event_maps_settings_display' || $page == 'toplevel_page_wonkasoft_menu' ) {
 			if ( ! wp_script_is( $bootstrapjs, 'enqueued' ) && ! wp_script_is($bootstrapjs, 'done' ) ) {
 				// Check page to load bootstrapjs only on settings page
 			 	// Enqueue bootstrap js
@@ -109,7 +109,6 @@ class Wonkasoft_Event_Maps_Admin {
 			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wonkasoft-event-maps-admin.js', array( 'jquery' ), $this->version, false );
 		} 
 		
-
 	}
 
 	// Builds the Admin menu for the plugin
@@ -136,7 +135,7 @@ class Wonkasoft_Event_Maps_Admin {
 	 *
 	 * @since 1.0.0 [<Adds the admin page for the plugin settings>]
 	 */
-	public function wonkasoft_event_maps_admin_display() {
+	public function wonkasoft_event_maps_settings_display() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-display.php';
 	}	
 

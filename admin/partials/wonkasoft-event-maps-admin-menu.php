@@ -25,7 +25,7 @@ add_menu_page(
 'Wonkasoft Tools',
 'manage_options',
 'wonkasoft_menu',
-array( $this,'wonkasoft_event_maps_admin_display' ),
+array( $this,'wonkasoft_event_maps_settings_display' ),
 WONKASOFT_EVENT_MAPS_IMG_PATH . "/wonka-logo-2.svg",
 100
 );
@@ -36,7 +36,7 @@ add_submenu_page(
 'Wonkasoft Event Maps',
 'manage_options',
 'wonkasoft_menu',
-array( $this,'wonkasoft_event_maps_admin_display' )
+array( $this,'wonkasoft_event_maps_settings_display' )
 );
 
 } else {
@@ -52,7 +52,7 @@ add_submenu_page(
 'Wonkasoft Event Maps',
 'manage_options',
 'wonkasoft_event_maps_settings_display',
-array( $this,'wonkasoft_event_maps_admin_display' )
+array( $this,'wonkasoft_event_maps_settings_display' )
 );
 
 }

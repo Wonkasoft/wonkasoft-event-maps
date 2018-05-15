@@ -5,11 +5,15 @@
 
 })( jQuery );
 
-function copyToClipboard() {
-	/* Get the text field */
-	var copyText = document.getElementById("wem-shortcode-input");
+function copyToClipboard( el ) {
 
-	var copyMessage = document.getElementById("copyMessage");
+	console.log( el );
+	/* Get the text field */
+	var copyText = el.previousSibling;
+	console.log( copyText );
+
+	var copyMessage = el.nextSibling;
+	console.log( copyMessage );
 	
 	/* Select the text field */
 	copyText.select();
