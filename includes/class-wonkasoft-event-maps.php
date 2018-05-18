@@ -123,9 +123,14 @@ class Wonkasoft_Event_Maps {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-wonkasoft-event-maps-public.php';
 
 		/**
-		 * The class responsible for building map and setting shortcodes.
+		 * The file responsible for building map and setting shortcodes.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/partials/wonkasoft-event-maps-build.php';
+
+		/**
+		 * The file responsible for loading custom search page template.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'wem-template-loader.php';
 
 		$this->loader = new Wonkasoft_Event_Maps_Loader();
 
@@ -180,7 +185,7 @@ class Wonkasoft_Event_Maps {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action( 'init', $plugin_public, 'wonkasoft_event_maps_custom_search' );
+		
 
 	}
 

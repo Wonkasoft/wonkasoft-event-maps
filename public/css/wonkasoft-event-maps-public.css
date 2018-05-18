@@ -8,6 +8,8 @@
 }
 
 #wem-search-form {
+	display: flex;
+	align-items: center;
 	width: 100%;
 	margin: 8px auto;
 	padding: 0 15px;

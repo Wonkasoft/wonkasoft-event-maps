@@ -73,6 +73,7 @@ class Wonkasoft_Event_Maps_Public {
 		 * class.
 		 */
 
+		wp_enqueue_style( 'fontawesome', 'https://use.fontawesome.com/releases/v5.0.12/css/all.css', array(), 'all');
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/wonkasoft-event-maps-public.css', array(), $this->version, 'all' );
 
 	}
@@ -98,15 +99,6 @@ class Wonkasoft_Event_Maps_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/wonkasoft-event-maps-public.js', array( 'jquery' ), $this->version, false );
 
-	}
-
-	/**
-	 * [wonkasoft_event_maps_custom_search The adds a custom search form for events]
-	 *
-	 * @since 1.0.0 [<Adds custom search form for events>]
-	 */
-	public function wonkasoft_event_maps_custom_search() {
-		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-custom-search.php';
 	}
 
 }

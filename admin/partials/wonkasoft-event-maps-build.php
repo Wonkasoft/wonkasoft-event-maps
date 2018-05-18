@@ -152,7 +152,6 @@ endif;
 }
 add_shortcode( 'wonkasoft-event-maps', 'wonkasoft_event_maps_shortcode', 30, 1);
 
-
 function wonkasoft_event_maps_search_shortcode( $atts ) {
 
   $output = '';
@@ -164,12 +163,12 @@ function wonkasoft_event_maps_search_shortcode( $atts ) {
   ), $atts );
 
   ob_start();
-    $output .= '<form role="search" method="get" id="wem-search-form" class="searchform" action="' . home_url( '/' ) . '" >';
-    $output .= '<div><label class="screen-reader-text" for="s">' . __( 'Search for:' ) . '</label>';
+    $output .= '<form role="search" method="get" id="wem-search-form" class="searchform" action="' . esc_url( home_url('wonkasoft-event-maps/templates/wem-search-page.php') ) . '" >';
+    $output .= '<label class="screen-reader-text" for="s">' . __( 'Search for:' ) . '</label>';
     $output .= '<input type="text" class="wem_input_text" value="' . get_search_query() . '" name="s" id="s" placeholder="Search for events..." />';
-    $output .= '<input type="hidden" value="'. get_option( 'wem_event_post_type' ) . '" name="post_type" id="post_type" />';
-    $output .= '<input type="submit" id="wem-search-submit" value="' . esc_attr__( 'Search' ) . '" />';
-    $output .= '</div>';
+    // $output .= '<input type="hidden" value="'. get_option( 'wem_event_post_type' ) . '" name="post_type" id="post_type" />';
+    $output .= '<input type="hidden" value="wem_search_form" name="action" />';
+    $output .= '<button type="submit" id="wem-search-submit"><i class="fa fa-search" aria-hidden="true"></i></button>';
     $output .= '</form>';
 
   $output .= ob_get_clean();
@@ -178,3 +177,11 @@ function wonkasoft_event_maps_search_shortcode( $atts ) {
 }
 
 add_shortcode( 'wonkasoft-event-maps-search', 'wonkasoft_event_maps_search_shortcode', 31, 1);
+
+function get_wem_search_template() {
+
+  return wem_get_template( 'wem-search-page.php' );
+
+}
+
+add_action( 'admin_post_wem_search_form', 'get_wem_search_template' );
