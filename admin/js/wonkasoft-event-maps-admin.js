@@ -5,10 +5,8 @@
 
 		/* Get the text field */
 		var copyText = el.previousElementSibling;
-		console.log( copyText );
 
 		var copyMessage = el.nextElementSibling;
-		console.log( copyMessage );
 		
 		/* Select the text field */
 		copyText.select();
