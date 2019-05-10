@@ -35,6 +35,36 @@ register_setting(
 	'wem_event_post_type' 
 );
 
+/**
+ * This creates settings area that is displayed on options page
+**/
+add_settings_section( 
+	'wonkasoft_event_maps_google_api', 
+	'Add Google API', 
+	null, 
+	'wonkasoft_event_maps_admin_display'
+);
+/**
+ * This creates settings field that is displayed on options page
+ */
+add_settings_field(
+	'ws_google_api',
+	'Add Google API',
+	'ws_google_api',
+	'wonkasoft_event_maps_admin_display',
+	'wonkasoft_event_maps_google_api'
+);
+
+register_setting( 
+	'wem_setting_group', 
+	'wonkasoft_event_maps_google_api' 
+);
+
+function ws_google_api() {
+	$ws_google_api_option = ( get_option( 'ws_google_api' ) ) ? esc_attr( get_option( 'ws_google_api' ) ) : '';
+	echo "<input name='' class='' id='' placeholder='GoogleAPI'></input>";
+}
+
 function wem_event_post_type( $args ) {
 	$wem_event_post_type_option = ( get_option( 'wem_event_post_type' ) ) ? esc_attr( get_option( 'wem_event_post_type' ) ) : '';
 
