@@ -71,7 +71,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
         $output .= "var map = new google.maps.Map(document.getElementById('map'), {";
         $output .= '  zoom: 4,';
         $output .=   'center: {lat: 38.847621, lng: -99.1631212}';
-        $output .= '});}';
+        $output .= '});';
 
         // Create an array of alphabetical characters used to label the markers.
         $output .= "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';";
