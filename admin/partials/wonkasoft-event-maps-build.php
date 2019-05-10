@@ -121,11 +121,17 @@ function wonkasoft_event_maps_shortcode( $atts ) {
       $output .= 'var locations = [';
       foreach ($locations as $location ):
       	if ( $location == end( $locations ) ) :
+          if ( $location["lat"] === '' || $location["lng"] === '' ) :
+            continue;
+          endif;
       		$output .= '{ e_title: "' . $location["event_title"] . '",';
       		$output .= 'link: "' . $location["map_to_link"] . '",';
       		$output .= 'locate: {lat: ' . $location["lat"] . ', lng: ' . $location["lng"] . '}';
       		$output .= '}';
       	else :
+          if ( $location["lat"] === '' || $location["lng"] === '' ) :
+            continue;
+          endif;
         	$output .= '{ e_title: "' . $location["event_title"] . '",';
         	$output .= 'link: "' . $location["map_to_link"] . '",';
       		$output .= 'locate: {lat: ' . $location["lat"] . ', lng: ' . $location["lng"] . '}';
@@ -142,7 +148,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
       
     $output .= '</script>';
     $output .= '<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=<?php //echo get_option( 'wonkasoft_event_maps_key' ); ?>&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=' . get_option( "wem_google_api" ) . '&callback=initMap">
         </script>';
 
 		$output .= ob_get_clean();
