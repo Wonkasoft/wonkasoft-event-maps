@@ -30,16 +30,16 @@
 						<p>Shortcode Information - Instructions on how to use the Wonkasoft Event Maps plugin</p>
 						<h2>Default Shortcodes</h2>
 							<p><h6>This is the map shortcode</h6>
-							<input name="wem-map-shortcode-input" size="30" id="wem-map-shortcode-input" type="text" readonly="yes" value="[wonkasoft-event-maps]" /><button id="copy-map" onclick="copyToClipboard( this )"><i id="shortcode-map-copy" class="fas fa-copy"></i></button><span class="copyMessage" style="display: none;">Copied</span></p>
+							<input name="wem-map-shortcode-input" size="30" id="wem-map-shortcode-input" type="text" readonly="yes" value="[wonkasoft-event-maps]" /><button id="copy-map" class="copy-btn"><i id="shortcode-map-copy" class="fas fa-copy"></i></button><span class="copyMessage" style="display: none;">Copied</span></p>
 							<h6>This is the post type search shortcode</h6>
-							<input name="wem-search-shortcode-input" size="30" id="wem-search-shortcode-input" type="text" readonly="yes" value="[wonkasoft-event-maps-search]" /><button id="copy-search" onclick="copyToClipboard( this )"><i id="shortcode-search-copy" class="fas fa-copy"></i></button><span class="copyMessage" style="display: none;">Copied</span></p>
+							<input name="wem-search-shortcode-input" size="30" id="wem-search-shortcode-input" type="text" readonly="yes" value="[wonkasoft-event-maps-search]" /><button id="copy-search" class="copy-btn"><i id="shortcode-search-copy" class="fas fa-copy"></i></button><span class="copyMessage" style="display: none;">Copied</span></p>
 							<form method="post" action="options.php">
 								<?php settings_fields( 'wem_setting_group' ); ?>
 								<?php do_settings_sections( 'wonkasoft_event_maps_admin_display' ); ?>
 								<?php submit_button(); ?>
 							</form>
 							<h2>Here is the map that the shortcode will display</h2>
-							<?php echo do_shortcode('[wonkasoft-event-maps]'); ?>
+							<?php echo do_shortcode( '[wonkasoft-event-maps]' ); ?>
 							<p></p>
 							<h2>Description</h2>
 							<p>Wonkasoft Event Maps was build to add a map using your event post types. You can add a map of all your post types anywhere that you uses shortcode on your site such as widgets, post, pages etc.</p>
