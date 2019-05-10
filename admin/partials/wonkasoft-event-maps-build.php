@@ -64,6 +64,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 		ob_start();
 		
 		$output .= '<div id="map" class="map-size"></div>';
+    $output .= '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfppUilFLzZB_rGxkx29qp3tWroStsq8&callback=initMap"></script>';
     $output .= '<script>';
     	$output .= 'var map, infoWindow, eventWindow;';
       $output .= 'function initMap() {';
@@ -141,7 +142,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
             }";
       
     $output .= '</script>';
-    $output .= '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfppUilFLzZB_rGxkx29qp3tWroStsq8&callback=initMap"></script>';
+    
 
 		$output .= ob_get_clean();
 
