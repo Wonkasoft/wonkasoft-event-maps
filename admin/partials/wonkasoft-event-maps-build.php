@@ -122,16 +122,22 @@ function wonkasoft_event_maps_shortcode( $atts ) {
       foreach ($locations as $location ):
       	if ( $location == end( $locations ) ) :
           if ( $location["lat"] === '' || $location["lat"] == null ) :
-            $location["lat"] = 0;
+            $location["lat"] = 0.0;
           endif;
           if ( $location["lng"] === '' || $location["lng"] == null ) :
-            $location["lng"] = 0;
+            $location["lng"] = 0.0;
           endif;
       		$output .= '{ e_title: "' . $location["event_title"] . '",';
       		$output .= 'link: "' . $location["map_to_link"] . '",';
       		$output .= 'locate: {lat: ' . $location["lat"] . ', lng: ' . $location["lng"] . '}';
       		$output .= '}';
       	else :
+          if ( $location["lat"] === '' || $location["lat"] == null ) :
+            $location["lat"] = 0.0;
+          endif;
+          if ( $location["lng"] === '' || $location["lng"] == null ) :
+            $location["lng"] = 0.0;
+          endif;
         	$output .= '{ e_title: "' . $location["event_title"] . '",';
         	$output .= 'link: "' . $location["map_to_link"] . '",';
       		$output .= 'locate: {lat: ' . $location["lat"] . ', lng: ' . $location["lng"] . '}';
