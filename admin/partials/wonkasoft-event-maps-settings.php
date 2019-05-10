@@ -57,13 +57,12 @@ add_settings_field(
 
 register_setting( 
 	'wem_setting_group', 
-	'wonkasoft_event_maps_google_api' 
+	'ws_google_api' 
 );
 
 function ws_google_api() {
 	$ws_google_api_option = ( get_option( 'ws_google_api' ) ) ? esc_attr( get_option( 'ws_google_api' ) ) : '';
-	$output =  '<label for="GoogleAPI">Google API</label><input type="text" class="form-control" id="google_api" placeholder="GoogleAPI" value="'.$ws_google_api_option.'">';
-	echo $output;
+	echo '<label for="GoogleAPI">Google API</label><input type="text" class="form-control" id="google_api" placeholder="GoogleAPI" value="'.$ws_google_api_option.'">';
 }
 
 function wem_event_post_type( $args ) {
