@@ -64,7 +64,6 @@ function wonkasoft_event_maps_shortcode( $atts ) {
 		ob_start();
 		
 		$output .= '<div id="map" class="map-size"></div>';
-    $output .= '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfppUilFLzZB_rGxkx29qp3tWroStsq8&callback=initMap"></script>';
     $output .= '<script>';
     	$output .= 'var map, infoWindow, eventWindow;';
       $output .= 'function initMap() {';
@@ -72,7 +71,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
         $output .= "var map = new google.maps.Map(document.getElementById('map'), {";
         $output .= '  zoom: 4,';
         $output .=   'center: {lat: 38.847621, lng: -99.1631212}';
-        $output .= '});';
+        $output .= '});}';
 
         // Create an array of alphabetical characters used to label the markers.
         $output .= "var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';";
@@ -143,6 +142,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
       
     $output .= '</script>';
     
+    $output .= '<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfppUilFLzZB_rGxkx29qp3tWroStsq8&callback=initMap"></script>';
 
 		$output .= ob_get_clean();
 
