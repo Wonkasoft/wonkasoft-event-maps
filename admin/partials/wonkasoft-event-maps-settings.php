@@ -31,9 +31,10 @@ add_settings_field(
 );
 
 register_setting( 
-	'wem_setting_group', 
-	'wem_event_post_type' 
+	'wem_setting_group',
+	'wem_event_post_type'
 );
+
 
 function wem_event_post_type( $args ) {
 	$wem_event_post_type_option = ( get_option( 'wem_event_post_type' ) ) ? esc_attr( get_option( 'wem_event_post_type' ) ) : '';

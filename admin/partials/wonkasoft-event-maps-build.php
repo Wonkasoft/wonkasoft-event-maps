@@ -142,7 +142,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
       
     $output .= '</script>';
     $output .= '<script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAmfppUilFLzZB_rGxkx29qp3tWroStsq8&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?key=<?php //echo get_option( 'wonkasoft_event_maps_key' ); ?>&callback=initMap">
         </script>';
 
 		$output .= ob_get_clean();
@@ -163,7 +163,7 @@ function wonkasoft_event_maps_search_shortcode( $atts ) {
   ), $atts );
 
   ob_start();
-    $output .= '<form role="search" method="get" id="wem-search-form" class="searchform" action="' . esc_url( home_url('wonkasoft-event-maps/templates/wem-search-page.php') ) . '" >';
+    $output .= '<form role="search" method="get" id="wem-search-form" class="searchform" action="' . esc_url( home_url() ) . '" >';
     $output .= '<label class="screen-reader-text" for="s">' . __( 'Search for:' ) . '</label>';
     $output .= '<input type="text" class="wem_input_text" value="' . get_search_query() . '" name="s" id="s" placeholder="Search for events..." />';
     // $output .= '<input type="hidden" value="'. get_option( 'wem_event_post_type' ) . '" name="post_type" id="post_type" />';
@@ -184,4 +184,4 @@ function get_wem_search_template() {
 
 }
 
-add_action( 'admin_post_wem_search_form', 'get_wem_search_template' );
+add_action( 'post_action_wem_search_form', 'get_wem_search_template' );

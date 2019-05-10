@@ -122,7 +122,7 @@ class Wonkasoft_Event_Maps_Admin {
 	}
 
 	/**
-	 * [wonkasoft_event_maps_add_action_links This adds the action links in the plugin area of the dashboard]
+	 * wonkasoft_event_maps_add_action_links This adds the action links in the plugin area of the dashboard
 	 *
 	 * @since 1.0.0 [<Adding of action links>]
 	 */
@@ -131,9 +131,9 @@ class Wonkasoft_Event_Maps_Admin {
 	}
 
 	/**
-	 * [wonkasoft_event_maps_admin The adds the admin display page]
+	 * wonkasoft_event_maps_admin The adds the admin display page
 	 *
-	 * @since 1.0.0 [<Adds the admin page for the plugin settings>]
+	 * @since 1.0.0 <Adds the admin page for the plugin settings>
 	 */
 	public function wonkasoft_event_maps_settings_display() {
 		include plugin_dir_path( __FILE__ ) . 'partials/wonkasoft-event-maps-admin-display.php';

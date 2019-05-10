@@ -1,12 +1,11 @@
-=== Plugin Name ===
-Wonkasoft Event Maps
+=== Wonkasoft Event Maps ===
 Contributors: llister, mrlister1
 Donate link: https://paypal.me/Wonkasoft
 Tags: google maps, events, event maps, 
 Requires at least: 3.0.1
-Tested up to: 4.9.5
+Tested up to: 5.2.0
 Requires PHP: 7.0+
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,7 +23,7 @@ e.g.
 
 1. Upload `wonkasoft-event-maps.php` to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Place shortcode in your templates
 
 == Frequently Asked Questions ==
 
@@ -42,10 +41,16 @@ Yes, we will be continuing to add more support for other popular event plugins. 
 
 == Changelog ==
 
-= 1.0 =
+= 1.0.2 =
+* Added an option to add a google maps api key.
+
+= 1.0.0 =
 * This is the first release of Wonkasoft Event Maps WordPress Plugin.
 
 == Upgrade Notice ==
 
-= 1.0 =
+= 1.0.2 =
+Added an option to add a google maps api key.
+
+= 1.0.0 =
 This is the first release of Wonkasoft Event Maps WordPress Plugin.
