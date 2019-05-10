@@ -69,7 +69,7 @@ function wonkasoft_event_maps_shortcode( $atts ) {
     	$output .= 'var map, infoWindow, eventWindow;';
       $output .= 'function initMap() {';
 
-        $output .= "var map = new google.maps.Map(document.getElementById('map'), {";
+        $output .= "var map = new google.maps.Map(document.getElementById('map'); {";
         $output .= '  zoom: 4,';
         $output .=   'center: {lat: 38.847621, lng: -99.1631212}';
         $output .= '});';
