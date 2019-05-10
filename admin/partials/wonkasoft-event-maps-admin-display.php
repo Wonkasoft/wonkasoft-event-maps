@@ -38,7 +38,7 @@
 								<?php do_settings_sections( 'wonkasoft_event_maps_admin_display' ); ?>
 								<?php submit_button(); ?>
 							</form>
-							<h2>Here is the map that the shorcode will display</h2>
+							<h2>Here is the map that the shortcode will display</h2>
 							<?php echo do_shortcode('[wonkasoft-event-maps]'); ?>
 							<p></p>
 							<h2>Description</h2>
