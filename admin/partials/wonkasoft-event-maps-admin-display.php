@@ -14,9 +14,10 @@
 <div class="wem-settings-wrap">
 	<div class="container-fluid">
 		<div class="row">
-			<div class="col-8 panel">
+			<div class="col-12">
+				<div class="card">
 				<div class="row headings">
-					<div class="col-2 logo-area">
+					<div class="col-4 col-md-2 logo-area">
 						<img src="<?php echo plugins_url( "../img/WEM-logo.svg", __FILE__ ); ?>">
 					</div> <!-- /col-4 -->
 					<div class="col-6 title-area">
@@ -24,8 +25,8 @@
 					</div> <!-- /col-4 -->
 				</div> <!-- /row -->
 				<hr />
-				<div class="row content-area">
-					<div class="col-8">
+				<div class="row content-area card-body">
+					<div class="col-12 col-md-8">
 						<h2>Documentation for Wonkasoft Event Maps</h2>
 						<p>Shortcode Information - Instructions on how to use the Wonkasoft Event Maps plugin</p>
 						<h2>Default Shortcodes</h2>
@@ -46,7 +47,8 @@
 							<p>If you have any questions, comments, or suggestions please send all inquiries to <a href="mail:support@wonkasoft.com">support@wonkasoft.com</a>. If you would like to <a href="https://paypal.me/Wonkasoft" target="_blank">donate</a> to support us please use this <a href="https://paypal.me/Wonkasoft" target="_blank">link</a></p>
 						</div> <!-- /col-4 -->
 					</div> <!-- /row -->
-				</div> <!-- /col-8 -->
+				</div><!-- .card -->
+				</div> <!-- /col-12 -->
 			</div> <!-- /row -->
 		</div> <!-- /container-fluid -->
 </div> <!-- /wem-settings-wrap -->

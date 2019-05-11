@@ -53,19 +53,19 @@
 						target = target.firstElementChild;
 					}
 
-					if ( target.classList.contains( 'fa-eye-slash' ) ) 
+					if ( target.classList.contains( 'fa-eye' ) ) 
 					{
 						document.querySelector( 'input[name="wem_google_api"]').type = 'text';
-						target.classList.remove( 'fa-eye-slash' );
-						target.classList.add( 'fa-eye' );
+						target.classList.remove( 'fa-eye' );
+						target.classList.add( 'fa-eye-slash' );
 					}
 					else
 					{
-						if ( target.classList.contains( 'fa-eye' ) ) 
+						if ( target.classList.contains( 'fa-eye-slash' ) ) 
 						{
 							document.querySelector( 'input[name="wem_google_api"]').type = 'password';
-							target.classList.remove( 'fa-eye' );
-							target.classList.add( 'fa-eye-slash' );
+							target.classList.remove( 'fa-eye-slash' );
+							target.classList.add( 'fa-eye' );
 						}
 					}
 				});

@@ -6,26 +6,30 @@
 	background: #f1f1f1;
 }
 
-.panel {
+.wem-settings-wrap .card {
 	background: #fff;
-	margin: 15px;
-	border: 1px solid rgba(0, 0, 0, .2);
-	border-radius: 6px;
-	box-shadow: 0 1px 6px 0 rgba(0, 0, 0, .3);
+	margin: 15px auto;
+	padding: 15px;
+	width: 100%;
+	max-width: 100%;
+	border: 1px solid rgba(0, 0, 0, .3);
+	border-radius: 4px;
+	box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .3);
 }
 
-.headings {
+.wem-settings-wrap .headings {
 	align-items: flex-end;
 }
 
-.title-text {
+.wem-settings-wrap .title-text {
 	text-transform: uppercase;
+	font-size: 2rem;
 }
 
-.map-size {
+.wem-settings-wrap .map-size {
 	height: 450px;
 }
 
-#shortcode-copy {
+.wem-settings-wrap #shortcode-copy {
  cursor: pointer;
 }

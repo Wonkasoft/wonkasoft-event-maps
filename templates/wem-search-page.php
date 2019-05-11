@@ -20,7 +20,6 @@ $post_types = get_post_types();
 get_header();
 ?>
 
-<?php var_dump($post_types); ?>
 <div><span>testing this one</span></div>
 
 <?php

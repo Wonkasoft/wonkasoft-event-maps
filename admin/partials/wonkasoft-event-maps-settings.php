@@ -62,7 +62,7 @@ register_setting(
 
 function wem_google_api() {
 	$ws_google_api_option = ( get_option( 'wem_google_api' ) ) ? esc_attr( get_option( 'wem_google_api' ) ) : '';
-	echo '<div class="input-group"><input type="password" class="form-control" name="wem_google_api" id="wem_google_api" placeholder="Google API Key" value="' . $ws_google_api_option . '"><div class="input-group-append"><div class="input-group-text"><i toggle="#password-field" class="far fa-eye-slash field-icon toggle-password"></i></div></div></div>';
+	echo '<div class="input-group"><input type="password" class="form-control" name="wem_google_api" id="wem_google_api" placeholder="Google API Key" value="' . $ws_google_api_option . '"><div class="input-group-append"><div class="input-group-text"><i toggle="#password-field" class="far fa-eye field-icon toggle-password"></i></div></div></div>';
 }
 
 function wem_event_post_type( $args ) {
